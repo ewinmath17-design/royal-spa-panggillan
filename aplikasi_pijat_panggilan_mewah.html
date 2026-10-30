@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Spa & Wellness - Pijat Panggilan Profesional & Mewah</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Layanan Pijat Panggilan Profesional, Mewah & Terpercaya ke Rumah, Hotel, dan Apartemen. Terapis Berpengalaman dan Bersertifikat.">
+    <meta name="theme-color" content="#062C22">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#041E17',      /* Deep Forest Dark */
+                            emerald: '#0A3A2F',   /* Primary Emerald */
+                            lightEmerald: '#125444',
+                            gold: '#D4AF37',      /* Champagne Gold */
+                            lightGold: '#F4E7B6',
+                            cream: '#FAF8F5',     /* Soothing Cream Bg */
+                            surface: '#FFFFFF',
+                            accent: '#2A9D8F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #1A2E28;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #B38728 100%);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #041E17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream flex flex-col min-h-screen pb-20 md:pb-0">
+
+    <!-- 1. HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md text-white border-b border-brand-gold/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-gold to-yellow-600 flex items-center justify-center text-brand-dark shadow-lg shadow-brand-gold/20">
+                    <i class="fa-solid fa-spa text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold font-serif-title tracking-wider block leading-tight gold-gradient-text">ROYAL SPA</span>
+                    <span class="text-[10px] tracking-[0.2em] text-brand-lightGold/80 uppercase font-medium">Wellness & Reflexology</span>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <button onclick="switchTab('home')" id="dt-nav-home" class="hover:text-brand-gold transition py-1 text-brand-gold border-b-2 border-brand-gold">Beranda</button>
+                <button onclick="switchTab('services')" id="dt-nav-services" class="hover:text-brand-gold transition py-1 text-gray-300">Menu Layanan</button>
+                <button onclick="switchTab('therapists')" id="dt-nav-therapists" class="hover:text-brand-gold transition py-1 text-gray-300">Tim Terapis</button>
+                <button onclick="switchTab('faq')" id="dt-nav-faq" class="hover:text-brand-gold transition py-1 text-gray-300">FAQ & Bantuan</button>
+            </nav>
+
+            <!-- CTA Direct WhatsApp -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://wa.me/6281234567890?text=Halo%20Royal%20Spa,%20saya%20ingin%20konsultasi%20layanan%20pijat" target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-xs font-bold transition shadow-lg shadow-emerald-900/30">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>CS 24 Jam</span>
+                </a>
+                <button onclick="openBookingFlow()" class="gold-gradient-bg text-brand-dark px-5 py-2.5 rounded-full text-xs font-bold hover:brightness-110 transition shadow-lg shadow-brand-gold/20">
+                    <i class="fa-solid fa-calendar-check mr-1"></i> Pesan Pijat
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- TAB 1: BERANDA (HOME) -->
+        <section id="tab-home" class="space-y-12">
+            <!-- HERO BANNER -->
+            <div class="relative bg-brand-dark text-white overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-b border-brand-gold/20">
+                <!-- Background Pattern Elements -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-gold/10 filter blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-brand-emerald/40 filter blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-emerald/80 border border-brand-gold/30 text-brand-lightGold text-xs font-semibold tracking-wide">
+                            <i class="fa-solid fa-crown text-brand-gold"></i> Layanan Pijat Panggilan Bintang 5
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif-title leading-tight">
+                            Nikmati Sensasi Spa Mewah <span class="gold-gradient-text block mt-1">Langsung di Kamar Anda</span>
+                        </h1>
+                        <p class="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Terapis profesional bersertifikat datang langsung ke Rumah, Hotel, atau Apartemen Anda. Membawa perlengkapan higienis steril, minyak aromaterapi kelas dunia, dan teknik pemijatan terbaik.
+                        </p>
+                        
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <button onclick="openBookingFlow()" class="w-full sm:w-auto gold-gradient-bg text-brand-dark font-bold text-sm px-8 py-4 rounded-2xl shadow-xl shadow-brand-gold/20 hover:scale-105 transition duration-200 flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-calendar-check text-base"></i>
+                                <span>Pesan Sekarang (3 Langkah)</span>
+                            </button>
+                            <button onclick="switchTab('services')" class="w-full sm:w-auto bg-brand-emerald hover:bg-brand-lightEmerald text-brand-lightGold border border-brand-gold/30 font-semibold text-sm px-6 py-4 rounded-2xl transition flex items-center justify-center gap-2">
+                                <span>Lihat Menu & Harga</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                            <div>
+                                <span class="block text-xl font-bold gold-gradient-text">100%</span>
+                                <span class="text-[11px] text-gray-400">Privasi Terjamin</span>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-bold gold-gradient-text">30-45m</span>
+                                <span class="text-[11px] text-gray-400">Kedatangan Tepat</span>
+                            </div>
+                            <div>
+                                <span class="block text-xl font-bold gold-gradient-text">4.9/5★</span>
+                                <span class="text-[11px] text-gray-400">2,400+ Ulasan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Card -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md bg-gradient-to-b from-brand-emerald to-brand-dark p-6 rounded-3xl border border-brand-gold/30 shadow-2xl gold-border-glow space-y-5">
+                            <div class="flex items-center justify-between border-b border-brand-gold/20 pb-4">
+                                <span class="text-xs font-bold text-brand-gold tracking-wider uppercase"><i class="fa-solid fa-bolt mr-1"></i> Estimasi Tercepat</span>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-semibold border border-emerald-500/30">Terapis Standby</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Pilih Jenis Pemijatan</h4>
+                                        <p class="text-xs text-gray-400">Tradisional, Aromaterapi, Deep Tissue & Refleksi</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Tentukan Lokasi & Jadwal</h4>
+                                        <p class="text-xs text-gray-400">Rumah, Hotel, Apartemen / Jam berapa saja</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Terapis Tiba & Santai</h4>
+                                        <p class="text-xs text-gray-400">Bayar setelah sesi pemijatan selesai</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-brand-dark/80 p-4 rounded-2xl border border-brand-gold/20 text-center">
+                                <p class="text-xs text-gray-300">Pesan tanpa pusing aplikasi rumit!</p>
+                                <button onclick="openBookingFlow()" class="mt-2 w-full gold-gradient-bg text-brand-dark py-2.5 rounded-xl text-xs font-bold hover:brightness-110 transition">
+                                    Mulai Pemesanan Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYANAN TERFAVORIT (HIGHLIGHT) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-brand-emerald tracking-widest uppercase">Pilihan Populer</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-serif-title text-brand-dark">Layanan Pijat Terfavorit</h2>
+                    </div>
+                    <button onclick="switchTab('services')" class="text-sm font-bold text-brand-emerald hover:text-brand-lightEmerald flex items-center gap-1">
+                        Lihat Semua Layanan (6 Menu) <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="home-featured-services">
+                    <!-- Dynamic Rendering via JS -->
+                </div>
+            </div>
+
+            <!-- KEUNGGULAN ROYAL SPA -->
+            <div class="bg-brand-emerald text-white py-12 px-4 sm:px-6 lg:px-8 border-y border-brand-gold/20">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                        <span class="text-xs font-bold text-brand-gold tracking-widest uppercase">Jaminan Kualitas</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-serif-title">Standar Layanan Bintang Lima</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bg-brand-dark/60 p-6 rounded-2xl border border-brand-gold/20 text-center space-y-3">
+                            <div class="w-12 h-12 rounded-xl gold-gradient-bg text-brand-dark flex items-center justify-center text-xl font-bold mx-auto">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <h3 class="font-bold text-base text-brand-lightGold">Terapis Bersertifikat</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">Seluruh terapis telah melewati pelatihan profesi terstandar dan uji kompetensi.</p>
+                        </div>
+                        <div class="bg-brand-dark/60 p-6 rounded-2xl border border-brand-gold/20 text-center space-y-3">
+                            <div class="w-12 h-12 rounded-xl gold-gradient-bg text-brand-dark flex items-center justify-center text-xl font-bold mx-auto">
+                                <i class="fa-solid fa-pump-soap"></i>
+                            </div>
+                            <h3 class="font-bold text-base text-brand-lightGold">Higienis & Steril</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">Minyak esensial kualitas premium, kain alas bersih baru, serta protokol kebersihan ketat.</p>
+                        </div>
+                        <div class="bg-brand-dark/60 p-6 rounded-2xl border border-brand-gold/20 text-center space-y-3">
+                            <div class="w-12 h-12 rounded-xl gold-gradient-bg text-brand-dark flex items-center justify-center text-xl font-bold mx-auto">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+                            <h3 class="font-bold text-base text-brand-lightGold">Harga Transparan</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">Biaya tertera secara transparan di awal tanpa biaya siluman atau tersembunyi.</p>
+                        </div>
+                        <div class="bg-brand-dark/60 p-6 rounded-2xl border border-brand-gold/20 text-center space-y-3">
+                            <div class="w-12 h-12 rounded-xl gold-gradient-bg text-brand-dark flex items-center justify-center text-xl font-bold mx-auto">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <h3 class="font-bold text-base text-brand-lightGold">Aman & Terpercaya</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">Keamanan dan kenyamanan Anda adalah prioritas utama kami 100%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: MENU LAYANAN LENGKAP -->
+        <section id="tab-services" class="hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold text-brand-emerald tracking-widest uppercase">Katalog Lengkap</span>
+                <h2 class="text-3xl font-bold font-serif-title text-brand-dark">Pilihan Layanan Pijat & Spa</h2>
+                <p class="text-xs sm:text-sm text-gray-600">Pilih jenis pemijatan sesuai kebutuhan tubuh Anda. Pilih durasi untuk melihat pembaruan harga secara otomatis.</p>
+            </div>
+
+            <!-- Dynamic Services Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-services-grid">
+                <!-- Rendered dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 3: TIM TERAPIS & FILTER -->
+        <section id="tab-therapists" class="hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold text-brand-emerald tracking-widest uppercase">Tim Profesional</span>
+                <h2 class="text-3xl font-bold font-serif-title text-brand-dark">Daftar Terapis Bersertifikat</h2>
+                <p class="text-xs sm:text-sm text-gray-600">Pilih terapis favorit Anda berdasarkan gender, kualifikasi, dan ketersediaan waktu.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center items-center gap-2 max-w-md mx-auto bg-white p-1.5 rounded-2xl border border-gray-200 shadow-sm">
+                <button onclick="filterTherapists('all')" id="btn-filter-all" class="flex-1 py-2 rounded-xl text-xs font-bold transition bg-brand-emerald text-white">Semua</button>
+                <button onclick="filterTherapists('Wanita')" id="btn-filter-wanita" class="flex-1 py-2 rounded-xl text-xs font-bold transition text-gray-600 hover:bg-gray-100">Wanita</button>
+                <button onclick="filterTherapists('Pria')" id="btn-filter-pria" class="flex-1 py-2 rounded-xl text-xs font-bold transition text-gray-600 hover:bg-gray-100">Pria</button>
+            </div>
+
+            <!-- Therapists List Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="therapists-grid">
+                <!-- Rendered dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 4: FORM PEMESANAN 3 LANGKAH (BOOKING FLOW) -->
+        <section id="tab-booking" class="hidden py-10 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto space-y-6">
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
+                <!-- Header Step Indicator -->
+                <div class="bg-brand-dark text-white p-6 border-b border-brand-gold/30">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold font-serif-title text-brand-lightGold">Formulir Pemesanan Pijat</h2>
+                        <span id="step-badge" class="text-xs font-bold px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/30">Langkah 1 dari 3</span>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                        <div id="booking-progress" class="gold-gradient-bg h-full w-1/3 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <!-- LANGKAH 1: LAYANAN & DURASI + TERAPIS -->
+                    <div id="step-1-content" class="space-y-6">
+                        <h3 class="text-base font-bold text-brand-dark flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full gold-gradient-bg text-brand-dark text-xs flex items-center justify-center font-bold">1</span>
+                            Pilih Layanan & Durasi Pemijatan
+                        </h3>
+
+                        <!-- Select Service -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold uppercase text-gray-600">Pilih Paket Pijat:</label>
+                            <select id="book-service-id" onchange="onBookingServiceChange()" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm font-semibold text-brand-dark focus:ring-2 focus:ring-brand-emerald outline-none">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Select Duration -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold uppercase text-gray-600">Pilih Durasi Pemijatan:</label>
+                            <div class="grid grid-cols-3 gap-3" id="booking-duration-btns">
+                                <button type="button" onclick="selectBookingDuration(60)" class="btn-dur py-3.5 border border-brand-emerald bg-brand-emerald/10 text-brand-emerald font-bold rounded-2xl text-xs text-center transition">60 Menit</button>
+                                <button type="button" onclick="selectBookingDuration(90)" class="btn-dur py-3.5 border border-gray-200 bg-white text-gray-700 font-bold rounded-2xl text-xs text-center hover:border-brand-emerald transition">90 Menit</button>
+                                <button type="button" onclick="selectBookingDuration(120)" class="btn-dur py-3.5 border border-gray-200 bg-white text-gray-700 font-bold rounded-2xl text-xs text-center hover:border-brand-emerald transition">120 Menit</button>
+                            </div>
+                        </div>
+
+                        <!-- Select Gender Preference -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold uppercase text-gray-600">Preferensi Gender Terapis:</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="p-3.5 border rounded-2xl flex items-center gap-3 cursor-pointer bg-gray-50 hover:border-brand-emerald">
+                                    <input type="radio" name="book_gender" value="Wanita" checked class="accent-brand-emerald">
+                                    <span class="text-xs font-bold text-gray-700">Terapis Wanita</span>
+                                </label>
+                                <label class="p-3.5 border rounded-2xl flex items-center gap-3 cursor-pointer bg-gray-50 hover:border-brand-emerald">
+                                    <input type="radio" name="book_gender" value="Pria" class="accent-brand-emerald">
+                                    <span class="text-xs font-bold text-gray-700">Terapis Pria</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Estimated Price Banner -->
+                        <div class="bg-brand-emerald/10 p-4 rounded-2xl border border-brand-emerald/20 flex justify-between items-center">
+                            <div>
+                                <span class="text-[11px] text-gray-500 block">Estimasi Total Biaya</span>
+                                <span class="text-xs font-medium text-gray-600">Termasuk biaya perjalanan</span>
+                            </div>
+                            <span id="step1-price-display" class="text-xl font-bold text-brand-emerald">Rp 0</span>
+                        </div>
+
+                        <button onclick="goToStep(2)" class="w-full gold-gradient-bg text-brand-dark font-bold py-4 rounded-2xl shadow-lg hover:brightness-110 transition flex items-center justify-center gap-2">
+                            Lanjut Isi Lokasi & Kontak <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- LANGKAH 2: LOKASI & ALAMAT -->
+                    <div id="step-2-content" class="hidden space-y-6">
+                        <h3 class="text-base font-bold text-brand-dark flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full gold-gradient-bg text-brand-dark text-xs flex items-center justify-center font-bold">2</span>
+                            Lokasi Kedatangan & Kontak Anda
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Nama Lengkap Pemesan:</label>
+                                <input type="text" id="cust-name" placeholder="Contoh: Bapak/Ibu Hendra" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Nomor WhatsApp Aktif:</label>
+                                <input type="tel" id="cust-phone" placeholder="Contoh: 081234567890" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Tipe Tempat Pemanggilan:</label>
+                                <select id="cust-place-type" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none">
+                                    <option value="Rumah / Kontrakan">Rumah Pribadi / Kontrakan</option>
+                                    <option value="Hotel / Kamar Hotel">Kamar Hotel / Resort</option>
+                                    <option value="Apartemen">Apartemen</option>
+                                    <option value="Kost">Kost / Homestay</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Alamat Lengkap & Nomor Kamar / Patokan:</label>
+                                <textarea id="cust-address" rows="3" placeholder="Contoh: Hotel Grand Room 402 / Jl. Kenanga No 12 dekat Indomaret" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button onclick="goToStep(1)" class="w-1/3 bg-gray-200 text-gray-700 font-bold py-4 rounded-2xl hover:bg-gray-300 transition">Kembali</button>
+                            <button onclick="goToStep(3)" class="w-2/3 gold-gradient-bg text-brand-dark font-bold py-4 rounded-2xl shadow-lg hover:brightness-110 transition flex items-center justify-center gap-2">
+                                Lanjut Pilih Jadwal <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- LANGKAH 3: RINGKASAN & JADWAL -->
+                    <div id="step-3-content" class="hidden space-y-6">
+                        <h3 class="text-base font-bold text-brand-dark flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full gold-gradient-bg text-brand-dark text-xs flex items-center justify-center font-bold">3</span>
+                            Konfirmasi Jadwal & Pesanan
+                        </h3>
+
+                        <!-- Date Time Picker -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Tanggal Layanan:</label>
+                                <input type="date" id="cust-date" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Jam Kedatangan:</label>
+                                <input type="time" id="cust-time" class="w-full p-3.5 bg-gray-50 border border-gray-300 rounded-2xl text-sm focus:ring-2 focus:ring-brand-emerald outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Summary Card Box -->
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-3 text-xs">
+                            <h4 class="font-bold text-brand-dark text-sm border-b pb-2">Rincian Pemesanan:</h4>
+                            <div class="flex justify-between"><span class="text-gray-500">Paket Layanan:</span><span id="sum-service" class="font-bold text-brand-dark">-</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Durasi:</span><span id="sum-duration" class="font-bold text-brand-dark">-</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Terapis:</span><span id="sum-gender" class="font-bold text-brand-dark">-</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Pemesan:</span><span id="sum-name" class="font-bold text-brand-dark">-</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Lokasi:</span><span id="sum-location" class="font-bold text-brand-dark text-right max-w-[200px] truncate">-</span></div>
+                            <div class="border-t pt-2 flex justify-between text-sm font-bold"><span class="text-brand-dark">Total Biaya:</span><span id="sum-price" class="text-brand-emerald font-bold text-base">Rp 0</span></div>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-2xl text-[11px] text-amber-900 flex items-start gap-2">
+                            <i class="fa-solid fa-shield-halved text-amber-600 text-sm mt-0.5"></i>
+                            <span>Sistem Pembayaran: Pembayaran dilakukan secara Tunai (Cash) atau Transfer langsung setelah sesi pemijatan selesai.</span>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button onclick="goToStep(2)" class="w-1/3 bg-gray-200 text-gray-700 font-bold py-4 rounded-2xl hover:bg-gray-300 transition">Ubah Data</button>
+                            <button onclick="submitToWhatsApp()" class="w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-2xl shadow-xl transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Send Order via WA
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: FAQ & BANTUAN -->
+        <section id="tab-faq" class="hidden py-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold text-brand-emerald tracking-widest uppercase">Pusat Informasi</span>
+                <h2 class="text-3xl font-bold font-serif-title text-brand-dark">Pertanyaan yang Sering Diajukan</h2>
+                <p class="text-xs sm:text-sm text-gray-600">Segala hal yang perlu Anda ketahui mengenai layanan pijat panggilan kami.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center">
+                        <span>Berapa lama terapis tiba di lokasi saya?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-brand-emerald transition" id="faq-icon-1"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 pt-0 text-xs text-gray-600 leading-relaxed border-t border-gray-100">
+                        Estimasi kedatangan terapis adalah 30 hingga 45 menit setelah konfirmasi order melalui WhatsApp.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center">
+                        <span>Apakah saya perlu menyiapkan perlengkapan?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-brand-emerald transition" id="faq-icon-2"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 pt-0 text-xs text-gray-600 leading-relaxed border-t border-gray-100">
+                        Tidak perlu. Terapis kami membawa seluruh perlengkapan lengkap seperti minyak aromaterapi, kain alas higienis, serta peralatan refleksi.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-bold text-sm text-brand-dark flex justify-between items-center">
+                        <span>Apakah ini murni layanan kesehatan & kebugaran?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-brand-emerald transition" id="faq-icon-3"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 pt-0 text-xs text-gray-600 leading-relaxed border-t border-gray-100">
+                        Ya, Royal Spa adalah penyedia jasa kesehatan & relaksasi murni profesional. Seluruh terapis bekerja terikat pada standar etika dan etika profesi yang ketat.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING WHATSAPP BUTTON (ALWAYS VISIBLE) -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Royal%20Spa,%20saya%20butuh%20bantuan%20layanan" target="_blank" class="fixed bottom-20 md:bottom-8 right-5 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-900/40 border-2 border-white transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-brand-dark text-gray-400 border-t border-brand-gold/20 z-50 px-2 py-2">
+        <div class="grid grid-cols-5 items-center text-center">
+            <button onclick="switchTab('home')" id="mb-nav-home" class="flex flex-col items-center gap-1 text-brand-gold">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-medium">Beranda</span>
+            </button>
+            <button onclick="switchTab('services')" id="mb-nav-services" class="flex flex-col items-center gap-1 hover:text-brand-gold">
+                <i class="fa-solid fa-spa text-base"></i>
+                <span class="text-[10px] font-medium">Layanan</span>
+            </button>
+            <!-- Middle Booking Action -->
+            <button onclick="openBookingFlow()" class="flex flex-col items-center justify-center -mt-6">
+                <div class="w-12 h-12 rounded-full gold-gradient-bg text-brand-dark flex items-center justify-center shadow-lg border-2 border-brand-dark">
+                    <i class="fa-solid fa-calendar-plus text-lg"></i>
+                </div>
+                <span class="text-[10px] font-bold text-brand-gold mt-1">Pesan</span>
+            </button>
+            <button onclick="switchTab('therapists')" id="mb-nav-therapists" class="flex flex-col items-center gap-1 hover:text-brand-gold">
+                <i class="fa-solid fa-user-doctor text-base"></i>
+                <span class="text-[10px] font-medium">Terapis</span>
+            </button>
+            <button onclick="switchTab('faq')" id="mb-nav-faq" class="flex flex-col items-center gap-1 hover:text-brand-gold">
+                <i class="fa-solid fa-circle-question text-base"></i>
+                <span class="text-[10px] font-medium">FAQ</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FOOTER (DESKTOP) -->
+    <footer class="bg-brand-dark text-white border-t border-brand-gold/20 py-12 px-4 sm:px-6 lg:px-8 hidden md:block">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl gold-gradient-bg flex items-center justify-center text-brand-dark font-bold">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <span class="text-lg font-bold font-serif-title gold-gradient-text">ROYAL SPA</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">Penyedia jasa pijat panggilan profesional bintang lima dengan jaminan privasi, kebersihan, dan kenyamanan terbaik.</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Navigasi Cepat</h4>
+                <ul class="space-y-2 text-xs text-gray-300">
+                    <li><button onclick="switchTab('home')" class="hover:text-brand-gold">Beranda</button></li>
+                    <li><button onclick="switchTab('services')" class="hover:text-brand-gold">Menu Layanan</button></li>
+                    <li><button onclick="switchTab('therapists')" class="hover:text-brand-gold">Daftar Terapis</button></li>
+                    <li><button onclick="openBookingFlow()" class="hover:text-brand-gold">Formulir Pesan</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Area Layanan</h4>
+                <p class="text-xs text-gray-300 leading-relaxed">Menjangkau Hotel, Apartemen, dan Rumah di seluruh Kota Utama (24 Jam Standby).</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Hubungi Kami</h4>
+                <p class="text-xs text-gray-300">WhatsApp: +62 812-3456-7890</p>
+                <p class="text-xs text-gray-300 mt-1">Layanan Konsultasi Gratis 24 Jam</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/10 text-center text-xs text-gray-500">
+            © 2026 Royal Spa & Wellness. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA MASTER LAYANAN
+        const servicesData = [
+            {
+                id: 'tradisional',
+                name: 'Pijat Tradisional Full Body',
+                icon: 'fa-hands',
+                desc: 'Pijatan otot menyeluruh mengombinasikan urut tradisional untuk melancarkan sirkulasi darah dan meredakan kelelahan.',
+                prices: { 60: 120000, 90: 160000, 120: 200000 },
+                popular: true,
+                badge: 'Paling Populer'
+            },
+            {
+                id: 'reflexology',
+                name: 'Refleksi Kaki & Hand Spa',
+                icon: 'fa-shoe-prints',
+                desc: 'Penekanan titik-titik saraf telapak kaki dan tangan untuk memulihkan organ tubuh internal dan meredakan kaki pegal.',
+                prices: { 60: 100000, 90: 140000, 120: 180000 },
+                popular: false,
+                badge: 'Favorit'
+            },
+            {
+                id: 'aromatherapy',
+                name: 'Aromatherapy Spa Relaxing',
+                icon: 'fa-oil-can',
+                desc: 'Sentuhan pijat lembut berpadu minyak esensial aromaterapi murni untuk menenangkan pikiran dan menghilangkan stres.',
+                prices: { 60: 130000, 90: 175000, 120: 220000 },
+                popular: true,
+                badge: 'Best Relaksasi'
+            },
+            {
+                id: 'deeptissue',
+                name: 'Deep Tissue / Pijat Pegal Linu',
+                icon: 'fa-child',
+                desc: 'Teknik pijatan kuat berfokus pada lapisan otot dalam untuk mengobati sakit punggung, leher kaku, dan cedera ringan.',
+                prices: { 60: 140000, 90: 185000, 120: 230000 },
+                popular: false,
+                badge: 'Terapi Khusus'
+            },
+            {
+                id: 'lulur',
+                name: 'Pijat Lulur & Body Scrub',
+                icon: 'fa-bath',
+                desc: 'Kombinasi pijat relaksasi dan lulur herbal alami untuk mengangkat sel kulit mati, mencerahkan, dan menghaluskan kulit.',
+                prices: { 60: 150000, 90: 200000, 120: 250000 },
+                popular: true,
+                badge: 'Spesial Skincare'
+            },
+            {
+                id: 'postpartum',
+                name: 'Pijat Ibu Hamil / Postpartum',
+                icon: 'fa-person-breastfeeding',
+                desc: 'Pijatan aman khusus untuk ibu hamil atau pasca melahirkan oleh terapis berpengalaman sertifikasi kebidanan.',
+                prices: { 60: 140000, 90: 190000, 120: 240000 },
+                popular: false,
+                badge: 'Aman & Lembut'
+            }
+        ];
+
+        // DATA MASTER TERAPIS
+        const therapistsData = [
+            {
+                name: 'Siti Sarah, A.Md',
+                gender: 'Wanita',
+                exp: '7 Tahun Exp',
+                rating: '4.9',
+                reviews: 142,
+                status: 'Tersedia',
+                skills: ['Tradisional', 'Aromaterapi', 'Lulur'],
+                photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80'
+            },
+            {
+                name: 'Budi Santoso',
+                gender: 'Pria',
+                exp: '9 Tahun Exp',
+                rating: '5.0',
+                reviews: 215,
+                status: 'Tersedia',
+                skills: ['Deep Tissue', 'Refleksi', 'Shiatsu'],
+                photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80'
+            },
+            {
+                name: 'Dewi Anggraini',
+                gender: 'Wanita',
+                exp: '5 Tahun Exp',
+                rating: '4.8',
+                reviews: 98,
+                status: 'Sedang Bertugas',
+                skills: ['Aromaterapi', 'Postpartum'],
+                photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80'
+            },
+            {
+                name: 'Rahmat Hidayat',
+                gender: 'Pria',
+                exp: '6 Tahun Exp',
+                rating: '4.9',
+                reviews: 110,
+                status: 'Tersedia',
+                skills: ['Pijat Tradisional', 'Pegal Linu'],
+                photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80'
+            }
+        ];
+
+        // APP STATE
+        let bookingState = {
+            serviceId: 'tradisional',
+            duration: 60,
+            gender: 'Wanita'
+        };
+
+        // ON INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedServices();
+            renderAllServices();
+            renderTherapists('all');
+            initBookingOptions();
+            setDefaultDateTime();
+        });
+
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            const tabs = ['home', 'services', 'therapists', 'booking', 'faq'];
+            tabs.forEach(id => {
+                const sec = document.getElementById(`tab-${id}`);
+                if(sec) sec.classList.add('hidden');
+
+                // Desktop Nav Style
+                const dtNav = document.getElementById(`dt-nav-${id}`);
+                if(dtNav) {
+                    dtNav.classList.remove('text-brand-gold', 'border-b-2', 'border-brand-gold');
+                    dtNav.classList.add('text-gray-300');
+                }
+
+                // Mobile Nav Style
+                const mbNav = document.getElementById(`mb-nav-${id}`);
+                if(mbNav) {
+                    mbNav.classList.remove('text-brand-gold');
+                    mbNav.classList.add('text-gray-400');
+                }
+            });
+
+            // Activate Target Tab
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            if(activeTab) activeTab.classList.remove('hidden');
+
+            const activeDtNav = document.getElementById(`dt-nav-${tabId}`);
+            if(activeDtNav) {
+                activeDtNav.classList.add('text-brand-gold', 'border-b-2', 'border-brand-gold');
+                activeDtNav.classList.remove('text-gray-300');
+            }
+
+            const activeMbNav = document.getElementById(`mb-nav-${tabId}`);
+            if(activeMbNav) {
+                activeMbNav.classList.add('text-brand-gold');
+                activeMbNav.classList.remove('text-gray-400');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // RENDER FEATURED SERVICES (HOME)
+        function renderFeaturedServices() {
+            const container = document.getElementById('home-featured-services');
+            container.innerHTML = '';
+            
+            const featured = servicesData.filter(s => s.popular);
+            featured.forEach(s => {
+                container.innerHTML += createServiceCardHTML(s);
+            });
+        }
+
+        // RENDER ALL SERVICES
+        function renderAllServices() {
+            const container = document.getElementById('all-services-grid');
+            container.innerHTML = '';
+            servicesData.forEach(s => {
+                container.innerHTML += createServiceCardHTML(s);
+            });
+        }
+
+        // CARD COMPONENT GENERATOR WITH DYNAMIC PRICE DURATION
+        function createServiceCardHTML(service) {
+            return `
+                <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid ${service.icon}"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-gold/20 text-yellow-800 px-3 py-1 rounded-full border border-brand-gold/30">
+                                ${service.badge}
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-brand-dark">${service.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">${service.desc}</p>
+                        </div>
+
+                        <!-- Duration Selector per Card -->
+                        <div class="space-y-1.5 pt-2">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase">Pilih Durasi:</label>
+                            <div class="grid grid-cols-3 gap-1.5">
+                                <button onclick="updateCardPrice('${service.id}', 60, this)" class="dur-btn-${service.id} py-1.5 text-xs font-bold rounded-xl border border-brand-emerald bg-brand-emerald text-white">60m</button>
+                                <button onclick="updateCardPrice('${service.id}', 90, this)" class="dur-btn-${service.id} py-1.5 text-xs font-bold rounded-xl border border-gray-200 bg-gray-50 text-gray-600 hover:border-brand-emerald">90m</button>
+                                <button onclick="updateCardPrice('${service.id}', 120, this)" class="dur-btn-${service.id} py-1.5 text-xs font-bold rounded-xl border border-gray-200 bg-gray-50 text-gray-600 hover:border-brand-emerald">120m</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">Total Biaya:</span>
+                            <span id="price-val-${service.id}" class="text-base font-bold text-brand-emerald">Rp ${service.prices[60].toLocaleString('id-ID')}</span>
+                        </div>
+                        <button onclick="selectAndBook('${service.id}')" class="gold-gradient-bg text-brand-dark font-bold text-xs px-4 py-2.5 rounded-xl shadow hover:brightness-110 transition flex items-center gap-1">
+                            Pesan <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // UPDATE CARD PRICE ON DURATION CLICK
+        function updateCardPrice(serviceId, mins, btn) {
+            const service = servicesData.find(s => s.id === serviceId);
+            if(!service) return;
+
+            // Update Price Text
+            document.getElementById(`price-val-${serviceId}`).innerText = `Rp ${service.prices[mins].toLocaleString('id-ID')}`;
+
+            // Reset All Buttons in Card
+            const btns = document.querySelectorAll(`.dur-btn-${serviceId}`);
+            btns.forEach(b => {
+                b.className = `dur-btn-${serviceId} py-1.5 text-xs font-bold rounded-xl border border-gray-200 bg-gray-50 text-gray-600 hover:border-brand-emerald`;
+            });
+
+            // Activate Clicked Button
+            btn.className = `dur-btn-${serviceId} py-1.5 text-xs font-bold rounded-xl border border-brand-emerald bg-brand-emerald text-white`;
+        }
+
+        // RENDER THERAPISTS WITH FILTER
+        function renderTherapists(filter) {
+            const container = document.getElementById('therapists-grid');
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' ? therapistsData : therapistsData.filter(t => t.gender === filter);
+
+            filtered.forEach(t => {
+                const skillsBadge = t.skills.map(s => `<span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">${s}</span>`).join(' ');
+                const statusColor = t.status === 'Tersedia' ? 'bg-emerald-100 text-emerald-800 border-emerald-200' : 'bg-gray-100 text-gray-600 border-gray-200';
+
+                container.innerHTML += `
+                    <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm flex items-center gap-4">
+                        <img src="${t.photo}" alt="${t.name}" class="w-20 h-20 rounded-2xl object-cover shadow-sm" onerror="this.src='https://placehold.co/150x150/0A3A2F/FFF?text=Terapis'">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-bold text-sm text-brand-dark">${t.name}</h4>
+                                <span class="text-xs font-bold text-amber-500 flex items-center gap-1">
+                                    <i class="fa-solid fa-star"></i> ${t.rating}
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold text-brand-emerald">${t.gender} • ${t.exp}</p>
+                            <div class="flex items-center gap-2 pt-1">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${statusColor}">${t.status}</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1 pt-2">
+                                ${skillsBadge}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterTherapists(type) {
+            ['all', 'wanita', 'pria'].forEach(t => {
+                const btn = document.getElementById(`btn-filter-${t}`);
+                if(btn) btn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition text-gray-600 hover:bg-gray-100";
+            });
+
+            const activeBtn = document.getElementById(`btn-filter-${type.toLowerCase()}`);
+            if(activeBtn) activeBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition bg-brand-emerald text-white";
+
+            renderTherapists(type);
+        }
+
+        // BOOKING FLOW LOGIC
+        function initBookingOptions() {
+            const select = document.getElementById('book-service-id');
+            select.innerHTML = '';
+            servicesData.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = `${s.name}`;
+                select.appendChild(opt);
+            });
+            updateBookingPriceDisplay();
+        }
+
+        function openBookingFlow() {
+            switchTab('booking');
+            goToStep(1);
+        }
+
+        function selectAndBook(serviceId) {
+            document.getElementById('book-service-id').value = serviceId;
+            bookingState.serviceId = serviceId;
+            openBookingFlow();
+        }
+
+        function onBookingServiceChange() {
+            bookingState.serviceId = document.getElementById('book-service-id').value;
+            updateBookingPriceDisplay();
+        }
+
+        function selectBookingDuration(mins) {
+            bookingState.duration = mins;
+            const container = document.getElementById('booking-duration-btns');
+            const btns = container.querySelectorAll('.btn-dur');
+            btns.forEach(b => {
+                if(b.innerText.includes(mins.toString())) {
+                    b.className = "btn-dur py-3.5 border border-brand-emerald bg-brand-emerald/10 text-brand-emerald font-bold rounded-2xl text-xs text-center transition";
+                } else {
+                    b.className = "btn-dur py-3.5 border border-gray-200 bg-white text-gray-700 font-bold rounded-2xl text-xs text-center hover:border-brand-emerald transition";
+                }
+            });
+            updateBookingPriceDisplay();
+        }
+
+        function getCalculatedPrice() {
+            const service = servicesData.find(s => s.id === bookingState.serviceId) || servicesData[0];
+            return service.prices[bookingState.duration] || service.prices[60];
+        }
+
+        function updateBookingPriceDisplay() {
+            const price = getCalculatedPrice();
+            document.getElementById('step1-price-display').innerText = `Rp ${price.toLocaleString('id-ID')}`;
+        }
+
+        function setDefaultDateTime() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            let hours = now.getHours() + 1;
+            if(hours > 23) hours = 23;
+            const timeStr = `${hours < 10 ? '0' + hours : hours}:00`;
+
+            document.getElementById('cust-date').value = dateStr;
+            document.getElementById('cust-time').value = timeStr;
+        }
+
+        // STEP NAVIGATION WITH VALIDATION
+        function goToStep(step) {
+            const s1 = document.getElementById('step-1-content');
+            const s2 = document.getElementById('step-2-content');
+            const s3 = document.getElementById('step-3-content');
+            const progress = document.getElementById('booking-progress');
+            const badge = document.getElementById('step-badge');
+
+            if(step === 1) {
+                s1.classList.remove('hidden');
+                s2.classList.add('hidden');
+                s3.classList.add('hidden');
+                progress.style.width = '33%';
+                badge.innerText = 'Langkah 1 dari 3';
+            } else if(step === 2) {
+                s1.classList.add('hidden');
+                s2.classList.remove('hidden');
+                s3.classList.add('hidden');
+                progress.style.width = '66%';
+                badge.innerText = 'Langkah 2 dari 3';
+            } else if(step === 3) {
+                // Validation Step 2
+                const name = document.getElementById('cust-name').value.trim();
+                const phone = document.getElementById('cust-phone').value.trim();
+                const address = document.getElementById('cust-address').value.trim();
+
+                if(!name || !phone || !address) {
+                    alert('Harap lengkapi Nama, Nomor WhatsApp, dan Alamat Anda.');
+                    return;
+                }
+
+                // Populate Summary
+                const service = servicesData.find(s => s.id === bookingState.serviceId);
+                const gender = document.querySelector('input[name="book_gender"]:checked').value;
+                const place = document.getElementById('cust-place-type').value;
+
+                document.getElementById('sum-service').innerText = service.name;
+                document.getElementById('sum-duration').innerText = `${bookingState.duration} Menit`;
+                document.getElementById('sum-gender').innerText = `Terapis ${gender}`;
+                document.getElementById('sum-name').innerText = name;
+                document.getElementById('sum-location').innerText = `${place} - ${address}`;
+                document.getElementById('sum-price').innerText = `Rp ${getCalculatedPrice().toLocaleString('id-ID')}`;
+
+                s1.classList.add('hidden');
+                s2.classList.add('hidden');
+                s3.classList.remove('hidden');
+                progress.style.width = '100%';
+                badge.innerText = 'Langkah 3 dari 3';
+            }
+        }
+
+        // WHATSAPP REDIRECT INTEGRATION
+        function submitToWhatsApp() {
+            const service = servicesData.find(s => s.id === bookingState.serviceId);
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const place = document.getElementById('cust-place-type').value;
+            const address = document.getElementById('cust-address').value;
+            const date = document.getElementById('cust-date').value;
+            const time = document.getElementById('cust-time').value;
+            const gender = document.querySelector('input[name="book_gender"]:checked').value;
+            const price = getCalculatedPrice();
+
+            const message = 
+`*ORDER PIJAT PANGGULAN - ROYAL SPA*
+----------------------------------------
+*Rincian Pemesanan:*
+• Layanan: ${service.name}
+• Durasi: ${bookingState.duration} Menit
+• Preferensi Terapis: Terapis ${gender}
+• Total Biaya: Rp ${price.toLocaleString('id-ID')}
+
+*Data Pemesan & Lokasi:*
+• Nama Lengkap: ${name}
+• Nomor WhatsApp: ${phone}
+• Tanggal Layanan: ${date}
+• Jam Kedatangan: ${time}
+• Tipe Tempat: ${place}
+• Alamat Lengkap: ${address}
+----------------------------------------
+Mohon konfirmasi terapis yang bertugas. Terima kasih!`;
+
+            const encoded = encodeURIComponent(message);
+            const targetPhone = "6281234567890"; // Ganti dengan nomor WhatsApp Admin Anda
+            window.open(`https://wa.me/${targetPhone}?text=${encoded}`, '_blank');
+        }
+
+        // FAQ TOGGLE LOGIC
+        function toggleFaq(num) {
+            const ans = document.getElementById(`faq-ans-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            
+            if(ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
